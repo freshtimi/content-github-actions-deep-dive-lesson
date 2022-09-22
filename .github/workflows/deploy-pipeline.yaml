@@ -45,7 +45,6 @@ jobs:
           name: zipped-bundle
           path: ${{ github.sha }}.zip
   publish:
-    needs: build
     runs-on: ubuntu-latest
     steps:
       -  name: create realease
@@ -55,7 +54,7 @@ jobs:
          with:
            tag_name: ${{ github.run_number }}
            release_name: Release ${{ github.run_number }}
-           body: New release for ${{ gitbub.sha }}. Release notes on the documentation site
+           body: New release for ${{ github.sha }}. Release notes on the documentation site
            draft: false
            prerelease: false
            
